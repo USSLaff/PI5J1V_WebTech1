@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .cím {
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .quote {
+            text-align: right;
+
+        }
+
+        .container {
+            margin-left: 15%;
+            margin-right: 15%;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px;
+        }
+
+        footer {
+            margin-left: 15%;
+            margin-right: 15%;
+            text-align: right;
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+
+        .cardcontainer {
+            background-color: rgb(211, 211, 211);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 10px;
+            border: 2px solid black;
+            margin-right: 30%;
+        }
+
+        .cardtitle {
+            background-color: rgb(146, 146, 146);
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .cardimg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body {
+            background-color: rgb(226, 226, 226);
+        }
+
+        button {
+            min-width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="cím"><b>HTML5 Űrlap - PI5J1V</b></h1>
+    </header>
+
+    <section class="container">
+        <form>
+            <p>
+                Név:
+                <input type="text" id="nev" name="nev" required placeholder="írd be a neved" autofocus
+                    autocomplete="off">
+            </p>
+            <p>
+                PIN kód:
+                <input type="number" id="pin" name="pin" required placeholder="írd be a PIN kódot" pattern="[0-9][4]">
+            </p>
+            <p>
+                Kedvenc gyümölcs:
+                <input type="text" id="fav_fruit" name="fav_fruit">
+            </p>
+            <p>
+                Életkor:
+                <input type="number" max="100" min="1" step="1" id="age" name="age">
+            </p>
+            <p>
+                Lábméret:
+                <input type="number" max="50" min="25" step="0.5" id="feet_size" name="feet_size">
+            </p>
+            <p>
+                Önbizalom:
+                <input type="range" min="0" max="100" id="confidence" name="confidence">
+            </p>
+        </form>
+        <p>
+            <button type="submit">Elküld</button>
+            <button type="submit" novalidate>Elküld ellenőrzés nélkül</button>
+        </p>
+    </section>
+    <hr>
+    <footer>
+        Forrás: <a href="https://html5doctor.com">https://html5doctor.com</a>
+        <br>
+        Formátumok: <a href="https://www.html5pattern.com">https://www.html5pattern.com</a>
+        <br>
+        JavaScript RegExp: <a
+            href="https://www.w3chools.com/jsref/jsref_obj_regexp.asp">https://www.w3chools.com/jsref/jsref_obj_regexp.asp</a>
+    </footer>
+</body>
+
+</html>
