@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meow</title>
+
+    <style>
+        .cím {
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .quote {
+            text-align: right;
+
+        }
+
+        .container {
+            margin-left: 15%;
+            margin-right: 15%;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px;
+        }
+
+        footer {
+            margin-left: 15%;
+            margin-right: 15%;
+            text-align: right;
+        }
+
+        hr {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cardcontainer {
+            background-color: rgb(211, 211, 211);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 10px;
+            border: 2px solid black;
+            margin-right: 30%;
+        }
+
+        .cardtitle {
+            background-color: rgb(146, 146, 146);
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .cardimg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body {
+            background-color: rgb(226, 226, 226);
+        }
+
+        button {
+            min-width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="cím"><b>Videó PI5J1V</b></h1>
+    </header>
+
+    <section class="container">
+
+
+        <video width="100%" id="myVideo" controls>
+            <source src="https://www.youtube.com/watch?v=cvUdLj-gnzg" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+
+        <hr width="100%">
+        <div class="controls-section">
+            <h2>Vezérlés</h2>
+            <div class="button-group">
+                <button id="playBtn">Indítás</button>
+                <button id="pauseBtn">Leállítás</button>
+                <button id="toggleBtn">Indítás/Leállítás</button>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <h2>Hangerő</h2>
+            <div class="button-group">
+                <button id="muteBtn">Néma</button>
+                <button id="quietBtn">Halk</button>
+                <button id="loudBtn">Hangos</button>
+            </div>
+            <div class="volume-display">
+                <span>Hangerő:</span>
+                <div class="volume-bar">
+                    <div class="volume-level" id="volumeLevel"></div>
+                </div>
+                <span id="volumeText">100%</span>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <h2>Sebesség</h2>
+            <div class="button-group">
+                <button id="verySlowBtn">Nagyon lassú (0.5x)</button>
+                <button id="slowBtn">Lassú (0.75x)</button>
+                <button id="normalBtn">Normál (1x)</button>
+                <button id="fastBtn">Gyorsabb (1.5x)</button>
+                <button id="veryFastBtn">Nagyon gyors (2x)</button>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <h2>Egyéb információk</h2>
+            <div class="button-group">
+                <button id="finishedBtn">Befejeződött-e?</button>
+                <button id="durationBtn">Videó hossza</button>
+                <button id="positionBtn">Jelenlegi pozíció</button>
+            </div>
+        </div>
+
+        <div class="info-display" id="infoDisplay">
+            Kattintson egy gombra az információk megjelenítéséhez!
+        </div>
+    </section>
+    <hr>
+    <footer>
+        Forrás: <a href="https://html5doctor.com">https://html5doctor.com</a>
+        <br>
+        Formátumok: <a href="https://www.html5pattern.com">https://www.html5pattern.com</a>
+        <br>
+        JavaScript RegExp: <a
+            href="https://www.w3chools.com/jsref/jsref_obj_regexp.asp">https://www.w3chools.com/jsref/jsref_obj_regexp.asp</a>
+    </footer>
+</body>
+
+<script>
+    // Videó elem és vezérlő gombok
+    const video = document.getElementById('myVideo');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const quietBtn = document.getElementById('quietBtn');
+    const loudBtn = document.getElementById('loudBtn');
+    const verySlowBtn = document.getElementById('verySlowBtn');
+    const slowBtn = document.getElementById('slowBtn');
+    const normalBtn = document.getElementById('normalBtn');
+    const fastBtn = document.getElementById('fastBtn');
+    const veryFastBtn = document.getElementById('veryFastBtn');
+    const finishedBtn = document.getElementById('finishedBtn');
+    const durationBtn = document.getElementById('durationBtn');
+    const positionBtn = document.getElementById('positionBtn');
+    const infoDisplay = document.getElementById('infoDisplay');
+    const progressBar = document.getElementById('progressBar');
+    const volumeLevel = document.getElementById('volumeLevel');
+    const volumeText = document.getElementById('volumeText');
+
+    playBtn.addEventListener('click', () => {
+        video.play();
+        showInfo('A videó elindult.');
+    });
+
+    pauseBtn.addEventListener('click', () => {
+        video.pause();
+        showInfo('A videó megállítva.');
+    });
+
+    toggleBtn.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            showInfo('A videó elindult.');
+        } else {
+            video.pause();
+            showInfo('A videó megállítva.');
+        }
+    });
+
+    muteBtn.addEventListener('click', () => {
+        video.volume = 0;
+        updateVolumeDisplay();
+        showInfo('A videó némítva.');
+    });
+
+    quietBtn.addEventListener('click', () => {
+        video.volume = 0.3;
+        updateVolumeDisplay();
+        showInfo('Hangerő beállítva: halk (30%).');
+    });
+
+    loudBtn.addEventListener('click', () => {
+        video.volume = 1;
+        updateVolumeDisplay();
+        showInfo('Hangerő beállítva: hangos (100%).');
+    });
+
+    // Sebesség gombok
+    verySlowBtn.addEventListener('click', () => {
+        video.playbackRate = 0.5;
+        showInfo('Lejátszási sebesség: nagyon lassú (0.5x).');
+    });
+
+    slowBtn.addEventListener('click', () => {
+        video.playbackRate = 0.75;
+        showInfo('Lejátszási sebesség: lassú (0.75x).');
+    });
+
+    normalBtn.addEventListener('click', () => {
+        video.playbackRate = 1;
+        showInfo('Lejátszási sebesség: normál (1x).');
+    });
+
+    fastBtn.addEventListener('click', () => {
+        video.playbackRate = 1.5;
+        showInfo('Lejátszási sebesség: gyorsabb (1.5x).');
+    });
+
+    veryFastBtn.addEventListener('click', () => {
+        video.playbackRate = 2;
+        showInfo('Lejátszási sebesség: nagyon gyors (2x).');
+    });
+
+    // Információs gombok
+    finishedBtn.addEventListener('click', () => {
+        const isFinished = video.ended ? 'Igen' : 'Nem';
+        showInfo(`A videó befejeződött-e? ${isFinished}`);
+    });
+
+    durationBtn.addEventListener('click', () => {
+        const duration = video.duration;
+        if (isNaN(duration)) {
+            showInfo('A videó hossza még nem elérhető.');
+        } else {
+            showInfo(`A videó hossza: ${formatTime(duration)}`);
+        }
+    });
+
+    positionBtn.addEventListener('click', () => {
+        const currentTime = video.currentTime;
+        showInfo(`Jelenlegi pozíció: ${formatTime(currentTime)}`);
+    });
+
+    // Segédfüggvények
+    function showInfo(message) {
+        infoDisplay.textContent = message;
+    }
+
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function updateVolumeDisplay() {
+        const volume = video.volume;
+        volumeLevel.style.width = `${volume * 100}%`;
+        volumeText.textContent = `${Math.round(volume * 100)}%`;
+    }
+
+    // Videó események
+    video.addEventListener('timeupdate', () => {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+    });
+
+    video.addEventListener('volumechange', updateVolumeDisplay);
+
+    video.addEventListener('loadedmetadata', () => {
+        updateVolumeDisplay();
+        showInfo('A videó betöltődött. Kattintson egy gombra a vezérléshez!');
+    });
+
+    // Alapértelmezett hangerő beállítása
+    video.volume = 1;
+    updateVolumeDisplay();
+</script>
+
+</html>
