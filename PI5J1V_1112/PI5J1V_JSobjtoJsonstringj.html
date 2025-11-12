@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1>JSON fájl feldolgozás, beolvasás - JavaScript-ben</h1>
+
+    <h2>JSON:</h2>
+    <p id="objdata"></p>
+
+    <button onclick="ParseJSON()">JSON generálás</button>
+
+
+
+    <script>
+        function ParseJSON() {
+            const jsobject =
+                { "title": "Ali goes to school", "genre": "Fiction", "type": "Children book" };
+            const jsstring = JSON.stringify(jsobject);
+            document.getElementById('objdata').textContent = jsstring;
+
+        }
+    </script>
+</body>
+
+</html>

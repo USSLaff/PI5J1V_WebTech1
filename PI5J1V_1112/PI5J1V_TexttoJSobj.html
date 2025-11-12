@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Text konvertálása JavaScript objektummá!</title>
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1>JSON fájl feldolgozás, beolvasás - JavaScript-ben</h1>
+
+    <h2>JSON:</h2>
+    <ul>
+        <li id="data1">
+
+        </li>
+        <li id="data2">
+
+        </li>
+        <li id="data3">
+
+        </li>
+        <li id="data4">
+
+        </li>
+    </ul>
+
+    <button onclick="ParseJSON()">JSON beolvasása</button>
+
+    <script>
+        function ParseJSON() {
+            const pi5j1v = '{"nev":"Gergő","irszam":"3333","varos":"Miskolc","egyetem":"Miskolci Egyetem"}';
+
+            const parsedObject = JSON.parse(pi5j1v);
+            console.log(parsedObject);
+
+            document.getElementById('data1').textContent = parsedObject.nev;
+            document.getElementById('data2').textContent = parsedObject.irszam;
+            document.getElementById('data3').textContent = parsedObject.varos;
+            document.getElementById('data4').textContent = parsedObject.egyetem;
+        }
+    </script>
+</body>
+
+</html>

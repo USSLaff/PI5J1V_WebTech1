@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <h1>JSON fájl feldolgozás, beolvasás - JavaScript-ben</h1>
+
+    <h2>JSON:</h2>
+    <ul>
+        <li id="data1">
+
+        </li>
+        <li id="data2">
+
+        </li>
+        <li id="data3">
+
+        </li>
+    </ul>
+
+    <button onclick="ParseJSON()">JSON beolvasása</button>
+
+
+
+    <script>
+        function ParseJSON() {
+            fetch("examplejs.json")
+                .then((res) => res.text())
+                .then((text) => {
+
+                    const parsedObject = JSON.parse(text);
+                    console.log(parsedObject);
+
+                    document.getElementById('data1').textContent = parsedObject.title;
+                    document.getElementById('data2').textContent = parsedObject.genre;
+                    document.getElementById('data3').textContent = parsedObject.type;
+
+                })
+                .catch((e) => console.error(e));
+        }
+    </script>
+</body>
+
+</html>
