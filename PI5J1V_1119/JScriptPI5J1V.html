@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+
+<body>
+
+
+    <div id="orarendData" class="car-list">
+
+    </div>
+
+    <script>
+        // JSON objektum definiálása
+        window.onload = () => {
+            ParseJSON();
+        };
+
+        function ParseJSON() {
+            fetch("orarendPI5J1V.json")
+                .then((res) => res.text())
+                .then((text) => {
+
+                    const parsedObject = JSON.parse(text);
+
+                    const eloadasok = parsedObject.PI5J1V_orarend.ora;
+
+                    console.log(eloadasok);
+
+                    eloadasok.forEach(eloadas => {
+                        var txt =
+                            `
+                        <ul>
+                            <li>${eloadas.targy}</li>
+                            <li>${eloadas.idopont.nap}, ${eloadas.idopont.tól}-tól ${eloadas.idopont.ig}-ig</li>
+                            <li>${eloadas.helyszin}</li>
+                            <li>${eloadas.oktato}</li>
+                            <li>${eloadas.szak}</li>
+                            <li>${eloadas._id}</li>
+                            <li>${eloadas._tipus}</li>
+                        </ul>
+                        <hr>
+                        `;
+                        document.getElementById("orarendData").innerHTML += txt;
+                    });
+
+
+                    /*for (let i = 0; i < parsedObject.cars.length; i++) {
+                        
+                    }*/
+
+
+                })
+                .catch((e) => console.error(e));
+        }
+
+        const carDataContainer = document.getElementById('carData');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Autó Adatok</title>
+
+</head>
+
+<body>
+    <h1>JSON Autó Adatok Megjelenítése</h1>
+
+    <div class="student-info">
+        <strong>Hallgató Neve (20)</strong>
+    </div>
+
+    <div id="carData" class="car-list">
+        <!-- ide jönnek az autó adatok -->
+    </div>
+
+    <script>
+        // JSON objektum definiálása
+        const KGObj = {
+            "name": "XY",
+            "age": 22,
+            "cars": [
+                { "name": "Toyota", "models": ["CHR", "Corolla", "Proace"] },
+                { "name": "Ford", "models": ["Kuga", "Mondeo", "Mustang"] },
+                { "name": "BMW", "models": ["320", "X3", "X5"] },
+                { "name": "Fiat", "models": ["500", "Panda", "Tipo"] }
+            ]
+        };
+
+        const carDataContainer = document.getElementById('carData');
+
+        for (let i = 0; i < KGObj.cars.length; i++) {
+            const car = KGObj.cars[i];
+
+
+            const brandElement = document.createElement('ul');
+            brandElement.className = 'car-brand';
+            brandElement.textContent = car.name + ":";
+            carDataContainer.appendChild(brandElement);
+
+            for (let j = 0; j < car.models.length; j++) {
+                const modelElement = document.createElement('li');
+                modelElement.className = 'car-model';
+                modelElement.textContent = car.models[j];
+                carDataContainer.appendChild(modelElement);
+            }
+        }
+    </script>
+</body>
+
+</html>
