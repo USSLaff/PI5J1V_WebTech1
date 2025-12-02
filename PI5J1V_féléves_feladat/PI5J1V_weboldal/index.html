@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEAR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/forms.css">
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-gear-fill"></i> GEAR
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="games.html">Játékok</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="upload_game.html">Játék feltöltése</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="showcase.html">Játékbemutató</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Kapcsolat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container  mt-5 pt-4">
+        <section class="hero-section bgdark rounded mb-5">
+            <div class="container ">
+                <h1 class="display-4  fw-bold">Üdvözöljük a játékkönyvtárunkban!</h1>
+                <a href="games.html" class="btn btn-light btn-lg mt-3">
+                    <i class="fas fa-search"></i> Böngéssz ízléseid szerint!
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div id="games" class="row">
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Elérhetőség</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Miskolc, Egyetem út 1, 3515</p>
+                    <p><i class="fas fa-phone"></i> +36 1 234 5678</p>
+                    <p><i class="fas fa-envelope"></i> email.email@email.email</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        var parsedData = [];
+        const container = $('#games');
+
+        function ParseJSON() {
+
+            parsedData = JSON.parse(localStorage.getItem("data"));
+
+            if (parsedData == null) {
+
+                console.log("didnt find data locally, fetching...");
+
+                fetch("data.json")
+                    .then((res) => res.text())
+                    .then((text) => {
+
+                        const parsedObjects = JSON.parse(text);
+
+                        if (parsedObjects.length === 0) {
+                            container.html('<div class="col-12 text-center"><p>Még nincs játék feltöltve.</p></div>');
+                            return;
+                        }
+
+
+                        const games = parsedObjects.game;
+
+                        parsedData = games;
+                        localStorage.setItem("data", JSON.stringify(parsedData));
+
+                        console.log(parsedData)
+                        drawCards();
+
+                    })
+                    .catch((e) => console.error(e));
+            } else {
+                console.log(parsedData);
+                drawCards();
+            }
+
+
+        }
+        function drawCards() {
+
+            console.log(parsedData);
+
+            container.html("");
+
+            parsedData.forEach(game => {
+                if (!game.latest) return;
+                const imageSrc = game.thumbnail ? `data:image/jpeg;base64,${game.thumbnail}` : 'https://via.placeholder.com/300x200?text=Nincs+kép';
+                const gameCard = `
+                            <div class="col-md-3 mb-3 fade-in ">
+                                <div class="card car-card h-100 bgdark">
+                                    <img src="${game.thumbnail}" class="card-img-top car-image" alt="${game.title}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${game.title}</h5>
+                                        <p class="card-text">
+                                            <strong>Kiadó:</strong> ${game.publisher || 'N/A'}<br>
+                                            <strong>Készítő:</strong> ${game.developer || 'N/A'}<br>
+                                            <strong>Ár:</strong> ${game.price.currency ? `${game.price.currency} ${game.price.currencytype}` : 'N/A'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                container.append(gameCard);
+            });
+
+        }
+
+        $(document).ready(function () {
+            console.log();
+
+            ParseJSON();
+
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEAR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/forms.css">
+
+    <style>
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="bi bi-gear-fill"></i> GEAR
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="games.html">Játékok</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="upload_game.html">Játék feltöltése</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="showcase.html">Játékbemutató</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Kapcsolat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5  pt-4">
+        <section class="mb-4">
+            <h1 class="text-center mb-3">Új játék feltöltése</h1>
+        </section>
+
+
+        <div class="bgdark p-3">
+            <form id="addGameForm" novalidate>
+                <div class="mb-3">
+                    <label for="gameTitle">Játék címe *</label>
+                    <input type="text" class="form-control" id="gameTitle" name="title" required>
+                    <div class="invalid-feedback">Kérlek add meg a címet a játéknak.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="releaseDate">Kiadás dátuma *</label>
+                    <input type="date" class="form-control" id="releaseDate" name="releaseDate" required>
+                    <div class="invalid-feedback">Kérlek válassz egy kiadási dátumot.</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="publisher">Kiadó *</label>
+                        <input type="text" class="form-control" id="publisher" name="publisher" required>
+                        <div class="invalid-feedback">Kérlek add meg a játék kiadóját.</div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="developer">Készítő *</label>
+                        <input type="text" class="form-control" id="developer" name="developer" required>
+                        <div class="invalid-feedback">Kérlek add meg a játék készítőjét.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="latest" name="latest">
+                        <label class="form-check-label" for="latest">Legújabb kiadás</label>
+                        <div>Jelöld be, ha ez a kiadótól a legújabb játék.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="genres">Genres *</label>
+                    <div class="genres-container">
+                        <div class="d-flex flex-wrap gap-2 mb-2">
+                            <span class="badge bg-primary">rpg</span>
+                            <span class="badge bg-primary">fps</span>
+                            <span class="badge bg-primary">action</span>
+                            <span class="badge bg-primary">adventure</span>
+                            <span class="badge bg-primary">strategy</span>
+                            <span class="badge bg-primary">sports</span>
+                            <span class="badge bg-primary">simulation</span>
+                            <span class="badge bg-primary">indie</span>
+                        </div>
+                        <select class="form-select" id="genres" name="genres" multiple required>
+                            <option value="rpg">RPG</option>
+                            <option value="fps">FPS</option>
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="strategy">Strategy</option>
+                            <option value="sports">Sports</option>
+                            <option value="simulation">Simulation</option>
+                            <option value="indie">Indie</option>
+                        </select>
+                        <div>Tartsd lenyomva a "Ctrl" gombot hogy többet ki tudj választani.</div>
+                        <div class="invalid-feedback">Válassz legalább egy genre-t!</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="priceAmount">Ár *</label>
+                        <input type="number" class="form-control" id="priceAmount" name="priceAmount" step="0.01"
+                            min="0" required>
+                        <div class="invalid-feedback">Please enter a valid price.</div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="currencyType">Currency *</label>
+                        <select class="form-select" id="currencyType" name="currencyType" required>
+                            <option value="eur">EUR (€)</option>
+                            <option value="usd">USD ($)</option>
+                            <option value="gbp">GBP (£)</option>
+                            <option value="huf">HUF (Ft)</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a currency.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="trailerLink">Bemutató Link (YouTube)</label>
+                    <input type="url" class="form-control" id="trailerLink" name="trailerLink"
+                        placeholder="https://www.youtube.com/embed/...">
+                    <div>Kérlek add meg a bemutató video BEÁGYAZOTT linkjét.</div>
+                    <div class="invalid-feedback">Kérlek adj meg egy valós beágyazott linket.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="thumbnail">Borítókép URL címe *</label>
+                    <input type="url" class="form-control" id="thumbnail" name="thumbnail" required>
+                    <div class="invalid-feedback">Kérlek adj meg egy címet.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description">Leírás *</label>
+                    <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                    <div class="invalid-feedback">Kérlek adj meg egy leírás</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Játék feltöltése</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Elérhetőség</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Miskolc, Egyetem út 1, 3515</p>
+                    <p><i class="fas fa-phone"></i> +36 1 234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info.nekuldjsemmit@hamisautokereskedes.hu</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/form-validation.js"></script>
+    <script src="scripts/car-manager.js"></script>
+    <script>
+
+        var parsedData = [];
+        const container = $('#games');
+
+        function ParseJSON() {
+
+            fetch("data.json")
+                .then((res) => res.text())
+                .then((text) => {
+
+                    const parsedObjects = JSON.parse(text);
+
+                    if (parsedObjects.length === 0) {
+                        container.html('<div class="col-12 text-center"><p>Még nincs játék feltöltve.</p></div>');
+                        return;
+                    }
+
+
+                    const games = parsedObjects.game;
+                    parsedData = games;
+                    console.log(parsedData)
+
+                })
+                .catch((e) => console.error(e));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const genreSelect = document.getElementById('genres');
+            const genreBadges = document.querySelectorAll('.genres-container .badge');
+
+            genreBadges.forEach(badge => {
+                badge.addEventListener('click', function () {
+                    const genreValue = this.textContent.toLowerCase();
+                    const option = Array.from(genreSelect.options)
+                        .find(opt => opt.value === genreValue);
+
+                    if (option) {
+                        option.selected = !option.selected;
+                        this.classList.toggle('selected');
+
+
+                        const event = new Event('change');
+                        genreSelect.dispatchEvent(event);
+                    }
+                });
+            });
+
+            // Sync select with badges
+            genreSelect.addEventListener('change', function () {
+                genreBadges.forEach(badge => {
+                    const genreValue = badge.textContent.toLowerCase();
+                    const option = Array.from(this.options)
+                        .find(opt => opt.value === genreValue);
+
+                    if (option) {
+                        badge.classList.toggle('selected', option.selected);
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+
+            ParseJSON();
+            const form = document.getElementById('addGameForm');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (form.checkValidity()) {
+                    // Ha a form valid, generáljuk a JSON-t
+                    const formData = getFormData();
+
+                    parsedData.push(formData)
+                    console.log(parsedData);
+                    localStorage.setItem("data", JSON.stringify(parsedData));
+
+
+                    // Reset form
+                    form.reset();
+                    form.classList.remove('was-validated');
+                } else {
+                    form.classList.add('was-validated');
+                }
+            });
+
+            function getFormData() {
+                const genres = Array.from(document.getElementById('genres').selectedOptions)
+                    .map(option => option.value);
+
+                return {
+                    title: document.getElementById('gameTitle').value,
+                    releaseDate: document.getElementById('releaseDate').value,
+                    publisher: document.getElementById('publisher').value,
+                    developer: document.getElementById('developer').value,
+                    latest: document.getElementById('latest').checked,
+                    genres: genres,
+                    price: {
+                        currency: parseFloat(document.getElementById('priceAmount').value),
+                        currencytype: document.getElementById('currencyType').value
+                    },
+                    trailerLink: document.getElementById('trailerLink').value || null,
+                    thumbnail: document.getElementById('thumbnail').value,
+                    description: document.getElementById('description').value
+                };
+            }
+        });
+    </script>
+
+    <style>
+        .confetti {
+            animation: confetti-fall 2s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .alert-success {
+            border-left: 5px solid #28a745;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert-danger {
+            border-left: 5px solid #dc3545;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #successActions .btn {
+            transition: all 0.3s ease;
+        }
+
+        #successActions .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</body>
+
+</html>

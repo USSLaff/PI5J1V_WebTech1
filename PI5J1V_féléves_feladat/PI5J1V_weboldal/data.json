@@ -1,0 +1,112 @@
+{
+    "game": [
+        {
+            "title": "Cyberpunk 2077",
+            "releaseDate": "2020-09-17",
+            "publisher": "CD Projekt",
+            "developer": "CD Projekt Red",
+            "latest": true,
+            "genres": [
+                "fps",
+                "rpg"
+            ],
+            "price": {
+                "currency": 39.99,
+                "currencytype": "eur"
+            },
+            "trailerLink": "https://www.youtube.com/embed/8X2kIfS6fb8",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWH8K2baa5QsbGLwLgdOBoCgAH8G-tts6ljcfY3mdpYjy4QjtJxuaAPeTM3asitg9ti_Mf&s=10",
+            "description": "Cyberpunk 2077 egy nyílt világú RPG, amely a sötét, technológiailag fejlett jövő Night City városában játszódik. A játékos V karakterét alakítja, egy zsoldost, aki halálos implantátummal küzd a túlélésért. A játék mély történettel, komplex karakterfejlesztéssel és lenyűgöző vizuális világgal rendelkezik."
+        },
+        {
+            "title": "Deus Ex: Mankind Divided",
+            "releaseDate": "2016-08-23",
+            "publisher": "Square Enix",
+            "developer": "Eidos-Montréal",
+            "latest": true,
+            "genres": [
+                "fps",
+                "rpg"
+            ],
+            "price": {
+                "currency": 29.99,
+                "currencytype": "eur"
+            },
+            "trailerLink": "https://www.youtube.com/embed/A0-FSHL_ftA",
+            "thumbnail": "https://upload.wikimedia.org/wikipedia/en/9/9a/Deus_Ex%2C_Mankind_Divided_Box_Art.jpeg",
+            "description": "A Deus Ex: Mankind Divided egy cyberpunk akció-RPG, amelyben Adam Jensenként visszatérünk egy megosztott világba, ahol felerősített embereket üldöznek. A játék hangsúlyt fektet a szerepjátékra, úgynevezett 'social stealth' mechanikára és több utas, elágazó történetvonalakra a közeljövőbeli disztópikus világban."
+        },
+        {
+            "title": "Borderlands 3",
+            "releaseDate": "2019-09-13",
+            "publisher": "2K",
+            "developer": "Gearbox Software",
+            "latest": true,
+            "genres": [
+                "fps",
+                "rpg"
+            ],
+            "price": {
+                "currency": 49.99,
+                "currencytype": "eur"
+            },
+            "trailerLink": "https://www.youtube.com/embed/5T1-_SVqF6Q",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-EY6Mh_hgvElOWZQ3fxT52oPHels4LkNB6qoaPgNEb9N5BX6Y8SAehhAQb-z4aGef4rXpg&s=10",
+            "description": "A Borderlands 3 egy looter-shooter RPG, amely ismét a Pandora bolygóra visz minket, és új világokat fedezhetünk fel. A játék milliós fegyverkínálattal, négy új Vault Hunter karakterrel és kaotikus kooperatív játékkal vár, miközben a gonosz Kalypso ikrekkel kell szembenéznünk."
+        },
+        {
+            "title": "Fallout 4",
+            "releaseDate": "2015-11-10",
+            "publisher": "Bethesda Softworks",
+            "developer": "Bethesda Game Studios",
+            "latest": false,
+            "genres": [
+                "fps",
+                "rpg"
+            ],
+            "price": {
+                "currency": 19.99,
+                "currencytype": "eur"
+            },
+            "trailerLink": "https://www.youtube.com/embed/X5aJfebzkrM",
+            "thumbnail": "https://upload.wikimedia.org/wikipedia/en/thumb/7/70/Fallout_4_cover_art.jpg/250px-Fallout_4_cover_art.jpg",
+            "description": "A Fallout 4 egy poszt-apokaliptikus szerepjáték, amely a nukleáris háború után 200 évvel játszódik. A játékos egy olyan túlélőt alakít, aki a fagyasztóból ébred, és eltűnt fiát keresi Boston romjai között. A játék tartalmaz bázisépítést, mértékadó döntéseket és egy hatalmas nyílt világot."
+        },
+        {
+            "title": "Far Cry 5",
+            "releaseDate": "2018-03-27",
+            "publisher": "Ubisoft",
+            "developer": "Ubisoft Montreal",
+            "latest": false,
+            "genres": [
+                "fps",
+                "rpg"
+            ],
+            "price": {
+                "currency": 59.99,
+                "currencytype": "eur"
+            },
+            "trailerLink": "https://www.youtube.com/embed/Kdaoe4hbMso",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzqHIO0U_1B2Fqgl6Lfz79rD6qKk-I2Tua_8miJdkpIaavqEsMRmuDbNDZwrTNXJj1u3BN&s=10",
+            "description": "A Far Cry 5 egy első személyű lövöldözős játék, amely a modern amerikai vidéken, Hope Countyban játszódik Montana államban. A játékosnak egy szektavezér, Joseph Seed és testvérei ellen kell harcolnia. A játék nyílt világa lehetővé teszi a szabadságos felfedezést, járművek használatát és szövetségesek toborzását."
+        },
+        {
+            "title": "BioShock Infinite",
+            "releaseDate": "2013-03-26",
+            "publisher": "2K",
+            "developer": "Irrational Games",
+            "latest": false,
+            "genres": [
+                "fps",
+                "rpg"
+            ],
+            "price": {
+                "currency": 29.99,
+                "currencytype": "eur"
+            },
+            "trailerLink": "https://www.youtube.com/embed/6VW8tgPib_s",
+            "thumbnail": "https://cdn1.epicgames.com/offer/df2da503f2074f078f8090da3c27ec47/EGS_BioShockInfiniteCompleteEdition_MassMediaGames_S1_2560x1440-bf29199cfe7a76f62965f582571024f6",
+            "description": "A BioShock Infinite egy első személyű lövöldözős játék erős RPG elemekkel, amely a lebegő városban, Columbiában játszódik 1912-ben. A játékos Booker DeWitt magánnyomozót alakítja, akinek feladata, hogy kimentse Elizabethet, egy rejtélyes lányt. A játék lenyűgöző történettel, egyedi környezettel és felejthetetlen karakterekkel rendelkezik."
+        }
+    ]
+}
